@@ -1,0 +1,5 @@
+
+[channel]
+type = 'command'
+interval = 15
+cmds = ["ASTF","ASTZ"]
