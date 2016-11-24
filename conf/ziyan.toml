@@ -30,6 +30,12 @@ process = "python.exe"
     in_q = 'mod_had'
     out_q = 'mod_meg'
 
+    [[app.plugin]]
+    path='plugins.plc.plc_command.PLCCommand'
+    #channel= 'plc_command'
+    in_q = 'plc_cmd'
+    out_q = 'plc_chd'
+
 
 [dam_equipment]
 equipmentno = "temperature-sensor"
