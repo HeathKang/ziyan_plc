@@ -1,3 +1,5 @@
+#!/usr/bin/python
+#coding:utf-8
 
 
 import os
@@ -52,21 +54,27 @@ class PLC(object):
 
         if os.name == 'nt':
             DLL_LOC = os.path.join(APPDIR, 'libnodave', 'win', 'libnodave.dll')
+            print DLL_LOC
             self.dave = ctypes.windll.LoadLibrary(DLL_LOC)
         if os.name == 'posix':
             # Dateipfad = os.getcwd()
             # DLL_LOC = Dateipfad + '/' + ('libnodave.so')
             DLL_LOC = os.path.join(APPDIR, 'libnodave.so')
+
             self.dave = ctypes.cdll.LoadLibrary(DLL_LOC)
+
 
     def connect(self):
         """ Open connection """
         print("connect ...")
         self.ph = self.dave.openSocket(self.port, self.ip)
+
+        print repr(self.port),repr(self.ip)
         if self.ph > 0:
             print("Port Handle OK.")
         else:
             print("Port Handle Not OK.")
+
             raise (Exception("can't open connection"))
 
         # Dave Interface handle
@@ -108,6 +116,43 @@ class PLC(object):
         else:
             print("please connect")
 
+    def readbytes_8_new(self, db, start, dlen):
+        """ read 0x00"""
+
+        print("- read")
+        if self.res == 0:
+            rd = self.dave.daveReadBytes(self.dc, self.daveDB, db, start, dlen, 0)
+            print
+            rd
+            if rd != 0:
+                raise (Exception('no pointer set'))
+            L = []
+            for z in range(dlen):
+                a = self.dave.daveGetU8(self.dc)
+                L.append(a)
+            return L
+
+        else:
+            print("please connect")
+
+    def readbytes_long_new(self, db, start, dlen):
+        """ read 0x00 00 00 00 """
+
+        # print ("- read")
+        if self.res == 0:
+            rd = self.dave.daveReadBytes(self.dc, self.daveDB, db, start, dlen, 0)
+            # print rd
+            if rd != 0:
+                raise (Exception('no pointer set'))
+            L = []
+            for z in range(dlen):
+                a = self.dave.daveGetU32(self.dc)
+                L.append(a)
+            return L
+
+        else:
+            print("please connect")
+
     def writebytes(self, db, wort, wert):
         """ write """
 
@@ -123,4 +168,61 @@ class PLC(object):
         self.dave.daveDisconnectPLC(self.dc);
         self.dave.closePort(self.ph)
         print("- PLC disconnected")
+
+
+def main():
+    """ for test """
+    # host = "192.168.1.10"
+    host = "127.0.0.1"
+    plc = PLC(host, 102)
+    plc.connect()
+
+    # plc.writebytes(1,0,2)
+    plc.writebytes(1, 1, 2)
+    plc.writebytes(1, 2, 2)
+    plc.writebytes(1, 58, 2)
+    plc.writebytes(1, 7, 2)
+
+    # plc.writebytes(11,8,0x3fe3) #1071849144 #
+    # plc.writebytes(11,10,0x1eb8)
+
+
+
+
+    print ('+++' * 20)
+    print plc.readbytes_long_new(1, 4, 2)[0]
+
+
+
+    # show_plcb_fake()
+
+
+
+
+
+
+
+
+
+
+
+
+    # (db,start_add,data)
+    # plc.writebytes(1,0,0)
+    # plc.readbytes(1,0,8)  #(start_add,offset)
+    # plc.writebytes(1,1,1) #(db,start_add,data)
+    '''
+
+
+    '''
+
+    # plc.readbytes(11,0,6)
+
+    plc.disconnect()
+
+
+if __name__ == '__main__':
+    main()
+
+
 

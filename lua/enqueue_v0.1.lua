@@ -41,7 +41,19 @@ for DAM
                     measurement = measurement,
                     time = timestamp,
                     fields = {
-                        temp  = vdata
+                          FL_Ck_Open_Warning_View = vdata[0],
+                          FR_Ck_Open_Warning_View = vdata[1],
+                          RL_Ck_Open_Warning_View = vdata[2],
+                          RR_Ck_Open_Warning_View = vdata[3],
+                          FL_Ck_Close_Warning_View = vdata[4],
+                          FR_Ck_Close_Warning_View = vdata[5],
+                          RL_Ck_Close_Warning_View = vdata[6],
+                          RR_Ck_Close_Warning_View = vdata[7],
+                          EM_stop = vdata[8],
+                          FL_Check_Cycle = vdata[9],
+                          FR_Check_Cycle = vdata[10],
+                          RL_Check_Cycle = vdata[11],
+                          RR_Check_Cycle = vdata[12],
                               },
                     tags = {
                         eqpt_no =  eqt,

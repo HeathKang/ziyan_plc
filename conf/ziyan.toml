@@ -12,29 +12,25 @@ process = "python.exe"
 #plugins = ['plugins.winwin.weiss_check.WeissCheck', 'plugins.winwin.weiss_handler.MsgHandler']
 
 
-   # [[app.plugin]]
-    #path='plugins.dam.dam_command.DAMCommand'
-    #channel = 'dam_command'
-    #in_q = 'mod_cmd'
-    #out_q = 'mod_chd'
 
-    #[[app.plugin]]
-    #path='plugins.dam.dam_check.DAMCheck'
-    #channel = 'dam_check'
-    #in_q = 'mod_chd'
-    #out_q = 'mod_had'
-
-    [[app.plugin]]
-    path='plugins.dam.dam_handler.DAMHandler'
-    channel = 'dam_handler'
-    in_q = 'mod_had'
-    out_q = 'mod_meg'
 
     [[app.plugin]]
     path='plugins.plc.plc_command.PLCCommand'
-    #channel= 'plc_command'
+    channel= 'plc_command'
     in_q = 'plc_cmd'
     out_q = 'plc_chd'
+
+    [[app.plugin]]
+    path='plugins.plc.plc_check.PLCCheck'
+    channel= 'plc_check'
+    in_q = 'plc_chd'
+    out_q = 'plc_had'
+
+    [[app.plugin]]
+    path='plugins.plc.plc_handler.PLCHandler'
+    channel= 'plc_handler'
+    in_q = 'plc_had'
+    out_q = 'plc_end'
 
 
 [dam_equipment]
@@ -43,8 +39,7 @@ equipmentno = "temperature-sensor"
 [logging]
 
 debug = true
-
-logfile = "logs/dam.log"
+logfile = "logs/plc.log"
 backup_count = 5
 max_size = 1048576
 format_string = '({record.time:%Y-%m-%d %H:%M:%S.%f%z}),{record.level_name},[{record.thread_name}],{record.channel},{record.func_name}[{record.lineno}]: {record.message}'
@@ -52,7 +47,7 @@ format_string = '({record.time:%Y-%m-%d %H:%M:%S.%f%z}),{record.level_name},[{re
 [redis]
 
 host = "127.0.0.1"
-port = 6389 
+port = 6389
 db = 3
 
 [influxdb]
