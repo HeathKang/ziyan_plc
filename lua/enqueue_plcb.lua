@@ -36,7 +36,7 @@ for DAM
 
         local s = {
                 cmd = ARGV[2],
-                rawdata = rawdata,
+                rawdata = rawdata[0],
                 data = {
                     measurement = measurement,
                     time = timestamp,

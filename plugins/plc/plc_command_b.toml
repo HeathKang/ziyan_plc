@@ -4,4 +4,4 @@
 
 type = 'command'
 interval = 1
-cmds = ["RED"]
+cmds = ["RED_B"]

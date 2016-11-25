@@ -60,7 +60,7 @@ class PLCCheck(CheckBase):
 
     def query(self,cmd):
 
-        if 'RED' in cmd:
+        if 'RED_B' in cmd:
             data_6 = self.plc.readbytes_8_new(1, 6, 1)[0]  # read addr 6.0~6.7
 
             data_7 = self.plc.readbytes_8_new(1, 7, 1)[0]
@@ -83,6 +83,90 @@ class PLCCheck(CheckBase):
                 data_16,
                 data_20,
                 ]
+
+        elif 'RED_A' in cmd:
+            data_0 = self.plc.readbytes_8_new(1, 0, 1)[0]
+            data_1 = self.plc.readbytes_8_new(1, 0, 1)[0]
+            data_2 = self.plc.readbytes_8_new(1, 0, 1)[0]
+            data_8 = self.plc.readbytes_long_new(1, 8, 2)[0]
+            data_12 = self.plc.readbytes_long_new(1, 12, 2)[0]
+            data_16 = self.plc.readbytes_long_new(1, 16, 2)[0]
+            data_20 = self.plc.readbytes_long_new(1, 20, 2)[0]
+            data_24 = self.plc.readbytes_long_new(1, 24, 2)[0]
+            data_28 = self.plc.readbytes_long_new(1, 28, 2)[0]
+            data_32 = self.plc.readbytes_long_new(1, 32, 2)[0]
+            data_36 = self.plc.readbytes_long_new(1, 36, 2)[0]
+            data_56 = self.plc.readbytes_8_new(1, 56, 1)[0]
+            data_57 = self.plc.readbytes_8_new(1, 57, 1)[0]
+            data_58 = self.plc.readbytes_8_new(1, 58, 1)[0]
+            data_59 = self.plc.readbytes_8_new(1, 59, 1)[0]
+
+            L = [((data_0 ) & 0x01),
+                 ((data_0 >> 1) & 0x01),
+                 ((data_0 >> 2) & 0x01),
+                 ((data_0 >> 3) & 0x01),
+                 ((data_0 >> 4) & 0x01),
+                 ((data_0 >> 5) & 0x01),
+                 ((data_0 >> 6) & 0x01),
+                 ((data_0 >> 7) & 0x01),
+
+                 ((data_1 >> 4) & 0x01),
+                 ((data_1 >> 5) & 0x01),
+                 ((data_1 >> 7) & 0x01),
+
+                 ((data_2 ) & 0x01),
+                 ((data_2 >> 2) & 0x01),
+                 ((data_2 >> 3) & 0x01),
+                 ((data_2 >> 5) & 0x01),
+                 ((data_2 >> 6) & 0x01),
+
+                 data_8,
+                 data_12,
+                 data_16,
+                 data_20,
+                 data_24,
+                 data_28,
+                 data_32,
+                 data_36,
+
+                 ((data_56 ) & 0x01),
+                 ((data_56 >> 1) & 0x01),
+                 ((data_56 >> 2) & 0x01),
+                 ((data_56 >> 3) & 0x01),
+                 ((data_56 >> 4) & 0x01),
+                 ((data_56 >> 5) & 0x01),
+                 ((data_56 >> 6) & 0x01),
+                 ((data_56 >> 7) & 0x01),
+
+                 ((data_57) & 0x01),
+                 ((data_57 >> 1) & 0x01),
+                 ((data_57 >> 2) & 0x01),
+                 ((data_57 >> 3) & 0x01),
+                 ((data_57 >> 4) & 0x01),
+                 ((data_57 >> 5) & 0x01),
+                 ((data_57 >> 6) & 0x01),
+                 ((data_57 >> 7) & 0x01),
+
+                 ((data_58) & 0x01),
+                 ((data_58 >> 1) & 0x01),
+                 ((data_58 >> 2) & 0x01),
+                 ((data_58 >> 3) & 0x01),
+                 ((data_58 >> 4) & 0x01),
+                 ((data_58 >> 5) & 0x01),
+                 ((data_58 >> 6) & 0x01),
+                 ((data_58 >> 7) & 0x01),
+
+                 ((data_59) & 0x01),
+                 ((data_59 >> 1) & 0x01),
+                 ((data_59 >> 2) & 0x01),
+                 ((data_59 >> 3) & 0x01),
+                 ((data_59 >> 4) & 0x01),
+                 ((data_59 >> 5) & 0x01),
+                ]
+
+
+
+
         return L
 
 

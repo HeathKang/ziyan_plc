@@ -82,7 +82,7 @@ class PLCHandler(HandlerBase):
 
             # log.debug(button_status)
 
-            measurement = 'PLC_B_Value'
+            measurement = self.conf['plc_measurement']['measurement']
             data = fields['payload']
             rawdata = fields['payload']
             log.debug(data)

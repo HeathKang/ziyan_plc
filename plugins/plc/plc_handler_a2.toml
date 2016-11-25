@@ -14,9 +14,13 @@
     port = 6379
     db = 5
 
+    [channel.plc_measurement]
+
+    measurement = 'PLC_A_MEASUREMENT'
+
     [channel.plc_equipment]
 
-    equipmentno = 'device1'
+    equipmentno = 'plc_a2'
 
     [channel.influxdb]
     host = "127.0.0.1"
@@ -35,10 +39,10 @@
 
     [channel.output]
     measurement = "plc"
-    enqueue_script = 'lua/enqueue_v0.1.lua'
+    enqueue_script = 'lua/enqueue_plca.lua'
     channel = "ch1"
 
     [output.tags]
-    eqpt_no = "eqpt02"
+    eqpt_no = "plc_a2"
     node = "n1"
     zone = "zone1"
