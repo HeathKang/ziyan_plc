@@ -13,60 +13,6 @@ process = "python.exe"
 
     [[app.plugin]]
     path='plugins.plc.plc_command.PLCCommand'
-    channel= 'plc_command_b'
-    in_q = 'plc_cmd'
-    out_q = 'plc_chd'
-
-    [[app.plugin]]
-    path='plugins.plc.plc_check.PLCCheck'
-    channel= 'plc_check_b'
-    in_q = 'plc_chd'
-    out_q = 'plc_had'
-
-    [[app.plugin]]
-    path='plugins.plc.plc_handler.PLCHandler'
-    channel= 'plc_handler_b'
-    in_q = 'plc_had'
-    out_q = 'plc_end'
-
-    [[app.plugin]]
-    path='plugins.plc.plc_command.PLCCommand'
-    channel= 'plc_command_b2'
-    in_q = 'plc_cmd'
-    out_q = 'plc_chd'
-
-    [[app.plugin]]
-    path='plugins.plc.plc_check.PLCCheck'
-    channel= 'plc_check_b2'
-    in_q = 'plc_chd'
-    out_q = 'plc_had'
-
-    [[app.plugin]]
-    path='plugins.plc.plc_handler.PLCHandler'
-    channel= 'plc_handler_b2'
-    in_q = 'plc_had'
-    out_q = 'plc_end'
-
-    [[app.plugin]]
-    path='plugins.plc.plc_command.PLCCommand'
-    channel= 'plc_command_b3'
-    in_q = 'plc_cmd'
-    out_q = 'plc_chd'
-
-    [[app.plugin]]
-    path='plugins.plc.plc_check.PLCCheck'
-    channel= 'plc_check_b3'
-    in_q = 'plc_chd'
-    out_q = 'plc_had'
-
-    [[app.plugin]]
-    path='plugins.plc.plc_handler.PLCHandler'
-    channel= 'plc_handler_b3'
-    in_q = 'plc_had'
-    out_q = 'plc_end'
-
-    [[app.plugin]]
-    path='plugins.plc.plc_command.PLCCommand'
     channel= 'plc_command_a'
     in_q = 'plc_cmd'
     out_q = 'plc_chd'
@@ -83,41 +29,7 @@ process = "python.exe"
     in_q = 'plc_had'
     out_q = 'plc_end'
 
-    [[app.plugin]]
-    path='plugins.plc.plc_command.PLCCommand'
-    channel= 'plc_command_a2'
-    in_q = 'plc_cmd'
-    out_q = 'plc_chd'
-
-    [[app.plugin]]
-    path='plugins.plc.plc_check.PLCCheck'
-    channel= 'plc_check_a2'
-    in_q = 'plc_chd'
-    out_q = 'plc_had'
-
-    [[app.plugin]]
-    path='plugins.plc.plc_handler.PLCHandler'
-    channel= 'plc_handler_a2'
-    in_q = 'plc_had'
-    out_q = 'plc_end'
-
-    [[app.plugin]]
-    path='plugins.plc.plc_command.PLCCommand'
-    channel= 'plc_command_a3'
-    in_q = 'plc_cmd'
-    out_q = 'plc_chd'
-
-    [[app.plugin]]
-    path='plugins.plc.plc_check.PLCCheck'
-    channel= 'plc_check_a3'
-    in_q = 'plc_chd'
-    out_q = 'plc_had'
-
-    [[app.plugin]]
-    path='plugins.plc.plc_handler.PLCHandler'
-    channel= 'plc_handler_a3'
-    in_q = 'plc_had'
-    out_q = 'plc_end'
+    
 
 
 [dam_equipment]

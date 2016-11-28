@@ -17,6 +17,10 @@
     [channel.plc_equipment]
 
     equipmentno = 'plc_b1'
+    
+    [channel.plc_measurement]
+
+    measurement = 'PLC_B_MEASUREMENT'
 
     [channel.influxdb]
     host = "127.0.0.1"

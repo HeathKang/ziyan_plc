@@ -61,13 +61,13 @@ class PLCCheck(CheckBase):
     def query(self,cmd):
 
         if 'RED_B' in cmd:
-            data_6 = self.plc.readbytes_8_new(1, 6, 1)[0]  # read addr 6.0~6.7
+            data_6 = self.plc.readbytes_8_new(11, 6, 1)[0]  # read addr 6.0~6.7
 
-            data_7 = self.plc.readbytes_8_new(1, 7, 1)[0]
-            data_8 = self.plc.readbytes_long_new(1, 8, 2)[0]
-            data_12 = self.plc.readbytes_long_new(1, 12, 2)[0]
-            data_16 = self.plc.readbytes_long_new(1, 16, 2)[0]
-            data_20 = self.plc.readbytes_long_new(1, 20, 2)[0]
+            data_7 = self.plc.readbytes_8_new(11, 7, 1)[0]
+            data_8 = self.plc.readbytes_long_new(11, 8, 2)[0]
+            data_12 = self.plc.readbytes_long_new(11, 12, 2)[0]
+            data_16 = self.plc.readbytes_long_new(11, 16, 2)[0]
+            data_20 = self.plc.readbytes_long_new(11, 20, 2)[0]
             L =[((data_6 >> 4) & 0x01),
                 ((data_6 >> 5) & 0x01),
                 ((data_6 >> 6) & 0x01),
@@ -85,21 +85,35 @@ class PLCCheck(CheckBase):
                 ]
 
         elif 'RED_A' in cmd:
-            data_0 = self.plc.readbytes_8_new(1, 0, 1)[0]
-            data_1 = self.plc.readbytes_8_new(1, 0, 1)[0]
-            data_2 = self.plc.readbytes_8_new(1, 0, 1)[0]
-            data_8 = self.plc.readbytes_long_new(1, 8, 2)[0]
-            data_12 = self.plc.readbytes_long_new(1, 12, 2)[0]
-            data_16 = self.plc.readbytes_long_new(1, 16, 2)[0]
-            data_20 = self.plc.readbytes_long_new(1, 20, 2)[0]
-            data_24 = self.plc.readbytes_long_new(1, 24, 2)[0]
-            data_28 = self.plc.readbytes_long_new(1, 28, 2)[0]
-            data_32 = self.plc.readbytes_long_new(1, 32, 2)[0]
-            data_36 = self.plc.readbytes_long_new(1, 36, 2)[0]
-            data_56 = self.plc.readbytes_8_new(1, 56, 1)[0]
-            data_57 = self.plc.readbytes_8_new(1, 57, 1)[0]
-            data_58 = self.plc.readbytes_8_new(1, 58, 1)[0]
-            data_59 = self.plc.readbytes_8_new(1, 59, 1)[0]
+            data_0 = self.plc.readbytes_8_new(11, 0, 1)[0]
+            data_1 = self.plc.readbytes_8_new(11, 0, 1)[0]
+            data_2 = self.plc.readbytes_8_new(11, 0, 1)[0]
+            
+            data_8 = self.plc.readbytes_long_new(11, 8, 4)[0]
+            data_12 = self.plc.readbytes_long_new(11, 12, 4)[0]
+            data_16 = self.plc.readbytes_long_new(11, 16, 4)[0]
+            data_20 = self.plc.readbytes_long_new(11, 20, 4)[0]
+            data_24 = self.plc.readbytes_long_new(11, 24, 4)[0]
+            data_28 = self.plc.readbytes_long_new(11, 28, 4)[0]
+            data_32 = self.plc.readbytes_long_new(11, 32, 4)[0]
+            data_36 = self.plc.readbytes_long_new(11, 36, 4)[0]
+            
+            '''
+            data_8 = self.plc.readbytes(11, 7, 4)[1]
+            data_12 = self.plc.readbytes(11, 11, 4)[1]
+            data_16 = self.plc.readbytes(11, 15, 4)[1]
+            data_20 = self.plc.readbytes(11, 19, 4)[1]
+            data_24 = self.plc.readbytes(11, 23, 4)[1]
+            data_28 = self.plc.readbytes(11, 27, 4)[1]
+            data_32 = self.plc.readbytes(11, 31, 4)[1]
+            data_36 = self.plc.readbytes(11, 35, 4)[1]
+            '''
+            
+            data_56 = self.plc.readbytes_8_new(11, 56, 1)[0]
+            data_57 = self.plc.readbytes_8_new(11, 57, 1)[0]
+            data_58 = self.plc.readbytes_8_new(11, 58, 1)[0]
+            data_59 = self.plc.readbytes_8_new(11, 59, 1)[0]
+           
 
             L = [((data_0 ) & 0x01),
                  ((data_0 >> 1) & 0x01),

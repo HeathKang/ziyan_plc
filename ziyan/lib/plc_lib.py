@@ -108,10 +108,11 @@ class PLC(object):
             if rd != 0:
                 raise (Exception('no pointer set'))
             print("ReadBytes: %s" % dlen)  # + str(self.res)
+            L = []
             for z in range(dlen):
                 a = self.dave.daveGetU16(self.dc)
-                print
-                z, " ", a
+                L.append(a)
+            return L
 
         else:
             print("please connect")

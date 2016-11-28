@@ -1,5 +1,5 @@
 
-title Ziyan
+title Ziyan_PLC
 
-make mon_ziyan
+python starter.py
 
